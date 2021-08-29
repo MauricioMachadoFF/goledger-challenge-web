@@ -1,8 +1,9 @@
 import React from 'react';
+import Homepage from './pages/Homepage/Homepage';
 
 function App() {
   return (
-    <div>ola</div>
+    <Homepage />
   );
 }
 

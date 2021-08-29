@@ -1,0 +1,15 @@
+.card-form-container {
+    background: #181818;
+    border-radius: 15px;
+}
+
+.submit-button {
+	background: #1db954;
+    color: white;
+    border:none;
+}
+
+.form-input {
+    display: flexbox;
+    flex-direction: column;
+}

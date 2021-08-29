@@ -1,0 +1,14 @@
+.card-container {
+    background: #282828;
+    width: 30vw;
+    height: 35vh;
+}
+
+.card-button {
+    border: none;
+    background: none;
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    font-size:larger;
+}
