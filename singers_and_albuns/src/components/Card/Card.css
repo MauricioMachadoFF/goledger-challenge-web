@@ -23,6 +23,7 @@
     width: 45px;
     height: 45px;
     font-size: x-large;
+    cursor: pointer;
 }
 .opt1:active, .opt2:active{
     background: white;

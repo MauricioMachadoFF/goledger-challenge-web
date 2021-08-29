@@ -1,10 +1,9 @@
-import React, {Children, useState} from 'react'
-import HorizontalScroll from "react-scroll-horizontal";
+import React, {useState, useEffect} from 'react'
 import CardForm from '../../components/CardForm/CardForm';
 import Card from '../../components/Card/Card';
 
-
-import { AiOutlineMenuUnfold, AiOutlineMenuFold } from "react-icons/ai";
+import {getAlbums} from "../../services/album";
+import { AiOutlineMenuUnfold} from "react-icons/ai";
 import './Homepage.css';
 import CreationMenu from '../../components/CreationMenu/CreationMenu';
 import AlbumCard from '../../components/AlbumCard/AlbumCard';
@@ -13,14 +12,18 @@ import AlbumForm from '../../components/AlbumForm/AlbumForm';
 import StreamingForm from '../../components/StreamingForm/StreamingForm';
 
 function Homepage() {
-
-    const child   = { width: `30em`, height: `100%`}
-    const parent  = { width: `60em`, height: `100%`}
-
+    const [res, setRes] = useState([{}]);
     const [showMenu, setShowMenu] = useState(false);
     const [showform, setShowForm] = useState(false);
     const [showAlbumForm, setShowAlbumForm] = useState(false);
     const [showStreamingForm, setShowStreamingForm] = useState(false);
+    
+    useEffect( async () => {
+        const response = await getAlbums();
+        console.log(res);
+        console.log(res.length);
+        setRes(response);
+    });
 
     const handleClick = () => {
         setShowMenu(!showMenu)
@@ -99,7 +102,7 @@ function Homepage() {
             </div>
             <div className="album-list">
                 <h1>Albums</h1>
-                {albuns.map((album) => 
+                {res.map((album) => 
                     <AlbumCard 
                         albumName={album.name} 
                         genre={album.genre}
