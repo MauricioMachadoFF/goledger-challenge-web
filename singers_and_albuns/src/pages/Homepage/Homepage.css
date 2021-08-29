@@ -1,0 +1,22 @@
+.show-menu {
+    border: none;
+    background: #1dc95b;
+    color: white;
+    width: 40px;
+    height: 40px;
+    font-size:larger;
+    border-radius: 50%;
+    margin: 5px 5px 5px 5px;
+    padding: 0px 5px 0px 5px;
+    transition: all .4s;
+}
+
+.show-menu:hover {
+    width: 45px;
+    height: 45px;
+    font-size: x-large;
+}
+
+.show-menu:active {
+    background: white;
+}

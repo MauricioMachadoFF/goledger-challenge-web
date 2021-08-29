@@ -1,5 +1,56 @@
 .menu-container {
     background: #535353;
-    width: 15vw;
+    width: fit-content;
     height: fit-content;
+    padding: 15px 7px 15px 7px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.menu-option {
+    background: #1dc95b;
+    border: none;
+    height: fit-content;
+    padding: 5px 7px 5px 7px;
+    border-radius: 10px;
+    margin: 10px 5px 5px 5px;
+    color: white;
+    font-size:16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all .4s;
+}
+
+.menu-option:hover {
+    padding: 10px 14px 10px 14px;
+    background: #1db954;
+}
+
+.menu-option:active {
+    background: white;
+}
+
+.hide-menu {
+    border: none;
+    background: #1dc95b;
+    color: white;
+    width: 40px;
+    height: 40px;
+    font-size:larger;
+    border-radius: 50%;
+    margin: 5px 5px 5px 5px;
+    padding: 0px 5px 0px 5px;
+    transition: all .4s;
+}
+
+.hide-menu:hover {
+    width: 45px;
+    height: 45px;
+    font-size: x-large;
+}
+
+.hide-menu:active {
+    background: white;
 }

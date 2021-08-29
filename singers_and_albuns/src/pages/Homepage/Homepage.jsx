@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Card from '../../components/Card/Card';
 import CardForm from '../../components/CardForm/CardForm';
 
 
@@ -10,6 +9,7 @@ import CreationMenu from '../../components/CreationMenu/CreationMenu';
 function Homepage() {
 
     const [showMenu, setShowMenu] = useState(false);
+    const [showform, setShowForm] = useState(false);
 
     const handleClick = () => {
         setShowMenu(!showMenu)
@@ -18,10 +18,9 @@ function Homepage() {
     
     return (
         <div>
-            <CreationMenu />
-            <button onClick={handleClick} hidden={showMenu ? true : false}><AiOutlineMenuUnfold/></button>
-            <CardForm />
-            <Card />
+            {showform ? <CardForm />: null}
+            {showMenu ? <CreationMenu setShowMenu={setShowMenu} setShowForm={setShowForm}/> : null}
+            <button className="show-menu" onClick={handleClick} hidden={showMenu ? true : false}><AiOutlineMenuUnfold/></button>
         </div>
     )
 }

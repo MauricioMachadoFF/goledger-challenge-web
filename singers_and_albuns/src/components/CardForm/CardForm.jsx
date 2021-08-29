@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 import './CardForm.css';
 
@@ -23,16 +24,19 @@ function CardForm() {
     }
     
     return (
-        <div className="card-form-container">
-            <form >
-                <input
-                    className="form-input" type="text" onChange={(e) => {setName(e.target.value)}} 
-                    placeholder="Artist name"/>
-                <input 
-                    className="form-input" type="text" onChange={(e) => {setDescription(e.target.value)}} 
-                    placeholder="Artist description"/>
-                <button className="submit-button form-input" onClick={handleSubmit}>Add Artist</button>
-            </form>
+        <div className="card-form-pos">
+            <div className="card-form-container">
+                <button className="close-button"><AiOutlineCloseCircle size={400}/></button>
+                <form >
+                    <input
+                        className="form-input" type="text" onChange={(e) => {setName(e.target.value)}} 
+                        placeholder="Artist name"/>
+                    <input 
+                        className="form-input" type="text" onChange={(e) => {setDescription(e.target.value)}} 
+                        placeholder="Artist description"/>
+                    <button className="submit-button form-input" onClick={handleSubmit}>Add Artist</button>
+                </form>
+            </div>
         </div>
     )
 }

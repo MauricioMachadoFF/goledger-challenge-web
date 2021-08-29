@@ -6,10 +6,14 @@ import './Card.css';
 function Card() {
     return (
         <div className="card-container">
-            <h1 className= "card-artist-name card-row">Name of Artist Here</h1>
-            <p className="card-desc card-row">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde vitae, explicabo repudiandae at voluptate sequi?</p>
-            <button className="card-button card-row"><AiOutlineEdit /></button>
-            <button className="card-button card-row"><AiOutlineDelete /></button>
+            <h1 className= "card-title card-row">Name of Artist Here</h1>
+            <p className="card-text card-row">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde vitae, explicabo repudiandae at voluptate sequi?</p>
+            <div >
+                <button className="card-button card-row opt1"><AiOutlineEdit /></button>
+                <button className="card-button card-row opt2"><AiOutlineDelete /></button>
+            </div>
+            
+            
         </div>
     )
 }
