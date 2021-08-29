@@ -1,7 +1,9 @@
 .card-container {
     background: #282828;
     width: 30vw;
-    height: 35vh;
+    height: fit-content;
+    margin: 15px 15px 15px 15px;
+    padding: 15px 15px 15px 15px;
 }
 
 .card-button {
@@ -14,6 +16,7 @@
     border-radius: 50%;
     margin: 5px 5px 5px 5px;
     padding: 0px 5px 0px 5px;
+    transition: all .1s;
 }
 
 .opt1:hover, .opt2:hover{

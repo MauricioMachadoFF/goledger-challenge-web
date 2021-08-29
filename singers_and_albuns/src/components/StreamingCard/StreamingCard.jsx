@@ -1,14 +1,12 @@
 import React from 'react'
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 
-import './Card.css';
+import '../Card/Card.css';
 
-function Card({name, description, location}) {
+function StreamingCard({strName}) {
     return (
         <div className="card-container">
-            <h1 className= "card-title card-row">{name}</h1>
-            <p className="card-text card-row">{location}</p>
-            <p className="card-text card-row">{description}</p>
+            <h1 className= "card-title card-row">{strName}</h1>
             <div >
                 <button className="card-button card-row opt1"><AiOutlineEdit /></button>
                 <button className="card-button card-row opt2"><AiOutlineDelete /></button>
@@ -19,4 +17,4 @@ function Card({name, description, location}) {
     )
 }
 
-export default Card;
+export default StreamingCard;

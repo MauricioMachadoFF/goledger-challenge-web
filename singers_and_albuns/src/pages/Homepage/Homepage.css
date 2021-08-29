@@ -9,6 +9,8 @@
     margin: 5px 5px 5px 5px;
     padding: 0px 5px 0px 5px;
     transition: all .4s;
+    position: absolute;
+    z-index: 3;
 }
 
 .show-menu:hover {
@@ -19,4 +21,10 @@
 
 .show-menu:active {
     background: white;
+}
+
+.artist-list, .album-list, .streaming-list {
+    display: flex;
+    flex-direction: row;
+    padding-top: 30px;
 }

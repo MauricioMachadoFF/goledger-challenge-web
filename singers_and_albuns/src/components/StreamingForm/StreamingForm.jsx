@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
-import './CardForm.css';
+import '../CardForm/CardForm.css';
 
-function CardForm({onClose}) {
+function StreamingForm({onCloseStreaming}) {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
 
@@ -29,18 +29,18 @@ function CardForm({onClose}) {
     
     return (
         <div className="card-form-container">
-            <button className="close-button" onClick={onClose}><AiOutlineCloseCircle size={400}/></button>
+            <button className="close-button" onClick={onCloseStreaming}><AiOutlineCloseCircle size={400}/></button>
             <form >
                 <input
                     className="form-input" type="text" onChange={(e) => {setName(e.target.value)}} 
-                    placeholder="Artist name"/>
+                    placeholder="Streaming name"/>
                 <input 
                     className="form-input" type="text" onChange={(e) => {setDescription(e.target.value)}} 
-                    placeholder="Artist description"/>
-                <button className="submit-button form-input" onClick={handleSubmit}>Add Artist</button>
+                    placeholder="Streaming description"/>
+                <button className="submit-button form-input" onClick={handleSubmit}>Add Album</button>
             </form>
         </div>
     )
 }
 
-export default CardForm
+export default StreamingForm
