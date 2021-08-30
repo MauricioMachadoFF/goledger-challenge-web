@@ -36,9 +36,7 @@ const getArtists = async () => {
                 }
             }
         })
-
-        console.log(response.data)
-        console.log(response.data.length)
+        return response.data.result
     } catch (error) {
         console.log(error.response.data)
         

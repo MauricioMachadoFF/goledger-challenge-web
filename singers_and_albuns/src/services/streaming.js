@@ -38,6 +38,7 @@ const getStreamings = async () => {
         })
 
         console.log(response.data)
+        return response.data.result
     } catch (error) {
         console.log(error.response.data)
         

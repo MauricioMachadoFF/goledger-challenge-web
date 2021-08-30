@@ -36,10 +36,6 @@ const getAlbums = async () => {
                 }
             }
         })
-
-        console.log(response.data.result)
-        console.log(response.data.result)
-        console.log(response.data.result.length)
         return response.data.result
     } catch (error) {
         console.log(error.response.data)
