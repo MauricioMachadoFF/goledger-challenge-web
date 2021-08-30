@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseUrl = 'http://ec2-100-26-219-1.compute-1.amazonaws.com/api';
 
-const getStreamByKey = async () => {
+const getStreamByKey = async (value) => {
     try {
         const response = await axios.request({
             url:`${baseUrl}/query/readAsset`,
@@ -10,12 +10,12 @@ const getStreamByKey = async () => {
             data: {
                 "key": {
                     "@assetType": "streaming",
-                    "@key": "streaming:c97df359-881b-5fd3-9e46-5b36c7b94bc2"
+                    "@key": value
                 }
             }
         })
     
-        console.log(response.data)
+        return response.data.name
     } catch (error) {
         console.log(error.response.data)
     }
@@ -36,13 +36,53 @@ const getStreamings = async () => {
                 }
             }
         })
+        return response.data.result
+    } catch (error) {
+        console.log(error.response.data)
+    }
+}
+
+const createStream = async (value) => {
+    try {
+        const response = await axios.request({
+            url:`${baseUrl}/invoke/createAsset`,
+            method: "post",
+            data: 
+            {
+                "asset": [
+                    {
+                      "@assetType": "streaming",
+                      "name": value 
+                    }
+                ]
+            }
+        })
 
         console.log(response.data)
         return response.data.result
     } catch (error) {
-        console.log(error.response.data)
-        
+        console.log(error.response)
     }
 }
 
-export  {getStreamByKey, getStreamings};
+const deleteStream = async (value) => {
+    try {
+        const response = await axios.request({
+            url:`${baseUrl}/invoke/deleteAsset`,
+            method: "delete",
+            data: 
+            {
+                "key": {
+                    "@assetType": "streaming",
+                    "@key": value
+                }
+            }
+        })
+
+        return response.data.result
+    } catch (error) {
+        console.log(error.response)
+    }
+}
+
+export  {getStreamByKey, getStreamings, createStream, deleteStream};

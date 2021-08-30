@@ -43,4 +43,57 @@ const getAlbums = async () => {
     }
 }
 
-export {getAlbums, getAlbumByKey};
+const deleteAlbum = async (value) => {
+    try {
+        const response = await axios.request({
+            url:`${baseUrl}/invoke/deleteAsset`,
+            method: "delete",
+            data: 
+            {
+                "key": {
+                    "@assetType": "streaming",
+                    "@key": value
+                }
+            }
+        })
+
+        return response.data.result
+    } catch (error) {
+        console.log(error.response)
+    }
+}
+
+const createAlbum = async (values) => {
+    try {
+        const response = await axios.request({
+            url:`${baseUrl}/invoke/createAsset`,
+            method: "post",
+            data: {
+                "asset": [
+                    {
+                      "@assetType": "album",
+                      "year": values.year,
+                      "name": values.name,
+                      "explicit": values.explicit,
+                      "nTracks": values.nTracks,
+                      "genre": values.genre,
+                      "artist": {
+                          "@key": values.artistKey
+                      },
+                      "strOptions": [
+                          {
+                              "@key": values.responseKey
+                          }
+                      ]
+                    }
+                ]
+            }
+        })
+        console.log(response.data.result)
+        return response.data.result
+    } catch (error) {
+        console.log(error.response)
+    }
+}
+
+export {getAlbums, getAlbumByKey, deleteAlbum, createAlbum};

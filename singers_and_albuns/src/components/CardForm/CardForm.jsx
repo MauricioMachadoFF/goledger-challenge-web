@@ -1,30 +1,30 @@
 import React, {useState} from 'react';
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { createArtist } from '../../services/artist';
 
 import './CardForm.css';
 
 function CardForm({onClose}) {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
+    const [location, setLocation] = useState('')
 
     const data = {
         "name": name,
-        "description": description
+        "description": description,
+        "location": location,
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        if(!name || !description) {
+        if(!name || !description || !location) {
             console.log("preencha todos os dados")
         }
         else{
-            console.log("por hoje e so pessoal")
-            console.log(data)   
+            await createArtist(data);
+            onClose(); 
+            window.location.reload();  
         }
-    }
-
-    const closeForm = () => {
-        console.log("form fechado")
     }
     
     return (
@@ -34,6 +34,9 @@ function CardForm({onClose}) {
                 <input
                     className="form-input" type="text" onChange={(e) => {setName(e.target.value)}} 
                     placeholder="Artist name"/>
+                <input 
+                    className="form-input" type="text" onChange={(e) => {setLocation(e.target.value)}} 
+                    placeholder="Country of origin"/>
                 <input 
                     className="form-input" type="text" onChange={(e) => {setDescription(e.target.value)}} 
                     placeholder="Artist description"/>

@@ -21,6 +21,7 @@ function Homepage() {
     const [showform, setShowForm] = useState(false);
     const [showAlbumForm, setShowAlbumForm] = useState(false);
     const [showStreamingForm, setShowStreamingForm] = useState(false);
+    const [strKey, setStrKey] = useState('');
     
     useEffect( async () => {
         const response = await getAlbums();
@@ -33,13 +34,12 @@ function Homepage() {
 
     const handleClick = () => {
         setShowMenu(!showMenu)
-        console.log("alg coisa")
     }
 
     return (
         <div>
             {showform ? <CardForm onClose={() => setShowForm(false)}/>: null}
-            {showAlbumForm ? <AlbumForm onCloseAlbum={() => setShowAlbumForm(false)}/>: null}
+            {showAlbumForm ? <AlbumForm responseArt={resArt} responseStr={resStr} onCloseAlbum={() => setShowAlbumForm(false)}/>: null}
             {showStreamingForm ? <StreamingForm onCloseStreaming={() => setShowStreamingForm(false)}/>: null}
             {showMenu ? <CreationMenu 
                 setShowMenu={setShowMenu} 
@@ -50,17 +50,18 @@ function Homepage() {
             <div className="artist-list">
                 <h1>Artists</h1>
                 {resArt.map((artist) => 
-                    <Card name={artist.name} description={artist.description} location={artist.location} />
+                    <Card name={artist.name} description={artist.description} location={artist.location} artKey={artist["@key"]}/>
                 )}
             </div>
             <div className="album-list">
                 <h1>Albums</h1>
                 {res.map((album) => 
                     <AlbumCard 
+                        albumKey={album["@key"]}
                         albumName={album.name} 
                         genre={album.genre}
                         strOpt={JSON.stringify(album.strOptions)}
-                        year={JSON.stringify(album.year)}
+                        year={album.year}
                         nTracks={album.nTracks}
                         explicit={album.explicit}
                         artist={JSON.stringify(album.artist)}/>
@@ -69,7 +70,10 @@ function Homepage() {
             <div className="streaming-list">
                 <h1>Streamings</h1>
                 {resStr.map((streaming) => 
-                    <StreamingCard strName={streaming.name}/>
+                    <StreamingCard 
+                        strName={streaming.name} 
+                        strKey={streaming["@key"]}
+                        setStrKey={setStrKey}/>
                 )}
             </div>
         </div>

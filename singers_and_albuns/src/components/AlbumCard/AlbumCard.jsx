@@ -1,10 +1,18 @@
-import React, {useEffect, useState} from 'react';
-import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import React from 'react';
+import { AiOutlineDelete} from "react-icons/ai";
 
 import './AlbumCard.css';
 import '../Card/Card.css';
+import { deleteAlbum } from '../../services/album';
+import { getStreamByKey } from '../../services/streaming';
 
-function AlbumCard({genre, albumName, strOpt, year, artist, nTracks, explicit}) {
+function AlbumCard({genre, albumName, strOpt, year, artist, nTracks, explicit, albumKey}) {
+
+
+    const deleteButton = async () => {
+        await deleteAlbum(albumKey)
+        window.location.reload();  
+    }
 
     return (
         <div className="card-container">
@@ -16,8 +24,7 @@ function AlbumCard({genre, albumName, strOpt, year, artist, nTracks, explicit}) 
             <p className="card-text card-row">Possui conteúdo explícito: {explicit ? "Sim" : "Não"}</p>
             <p className="card-text card-row">{strOpt}</p>
             <div >
-                <button className="card-button card-row opt1"><AiOutlineEdit /></button>
-                <button className="card-button card-row opt2"><AiOutlineDelete /></button>
+                <button className="card-button card-row opt2" onClick={deleteButton}><AiOutlineDelete /></button>
             </div>
             
             

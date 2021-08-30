@@ -1,30 +1,22 @@
 import React, {useState} from 'react';
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import { createStream } from '../../services/streaming';
 
 import '../CardForm/CardForm.css';
 
 function StreamingForm({onCloseStreaming}) {
     const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
 
-    const data = {
-        "name": name,
-        "description": description
-    }
-
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        if(!name || !description) {
+        if(!name) {
             console.log("preencha todos os dados")
         }
         else{
-            console.log("por hoje e so pessoal")
-            console.log(data)   
+            await createStream(name);
+            onCloseStreaming(); 
+            window.location.reload();
         }
-    }
-
-    const closeForm = () => {
-        console.log("form fechado")
     }
     
     return (
@@ -33,10 +25,7 @@ function StreamingForm({onCloseStreaming}) {
             <form >
                 <input
                     className="form-input" type="text" onChange={(e) => {setName(e.target.value)}} 
-                    placeholder="Streaming name"/>
-                <input 
-                    className="form-input" type="text" onChange={(e) => {setDescription(e.target.value)}} 
-                    placeholder="Streaming description"/>
+                    placeholder="Name of the streaming platform"/>
                 <button className="submit-button form-input" onClick={handleSubmit}>Add Album</button>
             </form>
         </div>

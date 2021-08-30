@@ -43,4 +43,45 @@ const getArtists = async () => {
     }
 }
 
-export {getArtistByKey, getArtists};
+const deleteArtist = async (value) => {
+    try {
+        const response = await axios.request({
+            url:`${baseUrl}/invoke/deleteAsset`,
+            method: "delete",
+            data: {
+                "key": {
+                    "@assetType": "artist",
+                    "@key": value
+                }
+            }
+        })
+        window.location.reload();
+        console.log(response.data.result);
+    } catch (error) {
+        console.log(error.response.data)
+    }
+}
+
+const createArtist = async (values) => {
+    try {
+        const response = await axios.request({
+            url:`${baseUrl}/invoke/createAsset`,
+            method: "post",
+            data: {
+                "asset": [
+                    {
+                      "@assetType": "artist",
+                      "name": values.name,
+                      "description": values.description,
+                      "location": values.location
+                    }
+                ]
+            }
+        }) 
+        console.log(response.data.result);
+    } catch (error) {
+        console.log(error.response.data)
+    }
+}
+
+export {getArtistByKey, getArtists, deleteArtist, createArtist};

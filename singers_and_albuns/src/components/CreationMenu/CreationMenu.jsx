@@ -1,13 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 import { AiOutlineMenuFold } from "react-icons/ai";
 import { IoCreateOutline } from "react-icons/io5";
-import CardForm from '../CardForm/CardForm';
 import './CreationMenu.css';
 
 function CreationMenu({setShowMenu, setShowForm, setShowStreamingForm, setShowAlbumForm}) {
-    const [createArtCard, setCreateArtCard] = useState(false);
-
 
     return (
         <div className="menu-container">
