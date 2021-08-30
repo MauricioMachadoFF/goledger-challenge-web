@@ -1,3 +1,17 @@
+# Instruções para iniciar o projeto
+
+Após clonar o repositório é necessários realizar essa série de comandos para rodar o projeto localmente.
+
+```
+cd singers_and_albuns
+```
+```
+yarn install
+
+yarn start
+```
+E pronto!
+
 # GoLedger Challenge
 
 In this challenge you will create a web interface to a blockchain application. In this application you must implement an artist and album registration interface.
